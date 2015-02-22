@@ -38,7 +38,7 @@ class UserController extends BaseController
       return View::make('user.admin')->with(array('users' => $users, 'regis' => 1));
     }
 
-    return View::make('layout.login')->with(['regis' => 1]);
+    return View::make('user.login')->with(['regis' => 1]);
   }  
   
 }
