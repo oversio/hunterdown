@@ -30,6 +30,7 @@ $env = $app->detectEnvironment(array(
 	'development' => array('OverMartinez'),
 	'development' => array('DANNYBOSCANPC'),
 	'development' => array('ESTSIS0127'),
+	'local' => array('overmartinez'),
 
 ));
 
