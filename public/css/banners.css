@@ -1,0 +1,31 @@
+.banners{width: auto;max-height: 500px;overflow: hidden;}
+.navbar-wrapper {position: absolute;top: 20px;right: 0;left: 0;z-index: 20;}
+.navbar-wrapper .container {padding-right: 0;padding-left: 0;}
+.navbar-wrapper .navbar {padding-right: 15px;padding-left: 15px;}
+
+.bs-callout{margin:20px 0;padding:20px;border-left:3px solid #eee; height: auto;}
+.bs-callout h4{margin-top:0;margin-bottom:5px}
+.bs-callout p:last-child{margin-bottom:0}
+.bs-callout code{background-color:#fff;border-radius:3px}
+.bs-callout-danger{background-color:#fdf7f7;border-color:#d9534f}
+.bs-callout-danger h4{color:#d9534f}
+.bs-callout-warning{background-color:#fcf8f2;border-color:#f0ad4e}
+.bs-callout-warning h4{color:#f0ad4e}
+.bs-callout-info{background-color:#f4f8fa;border-color:#5bc0de}
+.bs-callout-info h4{color:#5bc0de}
+
+#top-link {
+	display: inline;
+	text-decoration: none;
+	position: fixed;
+	bottom: 50px;
+	right: 20px;
+	overflow: hidden;
+	width: 51px;
+	height: 51px;
+	border: medium none;
+	text-indent: 100%;
+	background: url('img/top.png') no-repeat scroll left top transparent;
+}
+.well{color: #3a3e3d;}
+label[class~="checkbox-inline"]{margin-left: 10px;}
