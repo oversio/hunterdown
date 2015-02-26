@@ -26,7 +26,6 @@
 			<div class="col-md-12">
 				<div class="panel-body" style="font-size: 12px; padding: 0px;">
 					<table id="listUser" class="table table-striped table-hover table-responsive  paper-shadow-top-z-2" style="border-radius: 7px;" >
-						<!-- <paper-shadow z='3'></paper-shadow> -->
 						<thead>
 							<tr class="text-info" style="font-size: 14px">
 								<th class="hidden-sm hidden-xs">#</th>

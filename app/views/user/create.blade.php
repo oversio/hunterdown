@@ -10,9 +10,19 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="well well-lg">
 
-            {{ Form::open(array('id' => 'form-registro', 'class' => 'form-horizontal', 'method' => 'post', 'action' => 'UserController@store')) }}
+            {{ Form::model($user,array('id' => 'form-registro', 'class' => 'form-horizontal', 'method' => 'post', 'action' => 'UserController@store')) }}
 
                 <fieldset>
+                  @if($errors->any())
+                    <div class="alert alert-danger">
+                      <strong>Se encontraron los siguientes errores</strong>
+                      @foreach($errors->all() as $error)
+                        <ul>
+                          <li>{{$error}}</li>
+                        </ul>
+                      @endforeach
+                    </div>
+                  @endif
                   <legend>Regístro de Usuarios</legend>
 
                   <div class="form-group"> <!-- Input de Nombre -->
@@ -49,9 +59,9 @@
                   </div>
 
                   <div class="form-group"> <!-- Input de Re-Email -->
-                     {{Form::label('veremail', 'Re-ingresa E-Mail', array('class' => 'col-md-4 control-label'))}}
+                     {{Form::label('email_confirmation', 'Re-ingresa E-Mail', array('class' => 'col-md-4 control-label'))}}
                       <div class="col-md-8">
-                          {{Form::input('text', 'veremail', '', array('id' => 'veremail', 
+                          {{Form::input('text', 'email_confirmation', '', array('id' => 'email_confirmation', 
                                         'placeholder' => 'Re-ingresa Correo Electrónico', 
                                         'class' => 'form-control input-md', 
                                         'required' => 'true'))}}
@@ -72,10 +82,10 @@
                   </div>
 
                   <div class="form-group"> <!-- Input de Re-Password -->
-                     {{Form::label('verpasswd', 'Re-ingrese la Contraseña', 
+                     {{Form::label('passwd_confirmation', 'Re-ingrese la Contraseña', 
                                     array('class' => 'col-md-4 control-label'))}}
                       <div class="col-md-8">
-                          {{Form::input('password', 'verpasswd', '', array('id' => 'verpasswd', 
+                          {{Form::input('password', 'passwd_confirmation', '', array('id' => 'passwd_confirmation', 
                                         'placeholder' => 'Re-ingrese la Contraseña', 
                                         'class' => 'form-control input-md', 
                                         'required' => 'true',

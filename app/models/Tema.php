@@ -10,7 +10,7 @@ class Tema extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'temas';
-	// protected $fillable = ['descripcion'];
+	protected $fillable = ['categoria_id','user_id','titulo','temporada','sinopsis','ano','fechahora','pagoficial','info','trailer','descargas','poster'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

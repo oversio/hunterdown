@@ -24,6 +24,38 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
+	public $errors;
+	public function isValid($data)	{
+		$errors = '';
+		$messages = [
+			'required'  => 'El campo :attribute es obligatorio.',
+			'min'       => 'El campo :attribute no puede tener menos de :min carácteres.',
+			'email'     => 'El campo :attribute debe ser un email válido.',
+			'max'       => 'El campo :attribute no puede tener más de :min carácteres.',
+			'unique'    => 'El campo :attribute ingresado ya está registrado',
+			'confirmed' => 'Los campos :attribute deben coincidir',
+			'date'		=> 'Formato de fecha invalido'
+		];
+
+		$rules = [
+			'nombre'    => 'required|min:3|max:60',
+			'usuario'   => 'required|min:3|max:60|unique:users',
+			'email'     => 'required|confirmed|email|min:6|max:100|unique:users',
+			'password'  => 'required|confirmed|min:3|max:25',
+			'sexo'      => 'required|in:Mujer,Hombre,Otros',
+			'fecnac'	=> 'date'
+		];
+
+		$validacion = Validator::make($data, $rules, $messages);
+		if ($validacion->passes())        {
+            return true;
+        }
+        
+        $this->errors = $validacion->errors();
+        
+        return false;
+	}
+
 
 	public function setPasswordAttribute($value){
 		$this->attributes['password'] = Hash::make($value);

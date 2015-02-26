@@ -15,13 +15,13 @@
 	@stop
 
 	@section('info')	
-		<div class="row">
-			<div class="col-md-12">
-				@if ($regis == 1)
-					{{"<div class='alert alert-info' role='alert'>Tema <strong class='text-danger'>$temains->titulo</strong> registrado con exito!</div>"}}
-				@endif
+		@if($mens != '')
+			<div class="row">			
+				<div class="col-md-12">
+					{{"<div class='alert ".$clase."' role='alert'>".$mens."</div>"}}
+				</div>
 			</div>
-		</div>
+		@endif
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel-body" style="font-size: 12px; padding: 0px;">

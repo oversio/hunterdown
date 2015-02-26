@@ -19,8 +19,7 @@
 			<div class="col-md-2" style="marging-right: 1px;">
 				<span><h1 style="margin-top: 0px;" >Menú</h1></span>								
 
-				<ul id="menulateral" class="nav nav-pills nav-stacked">
-					<paper-shadow z='1'></paper-shadow>
+				<ul id="menulateral" class="nav nav-pills nav-stacked paper-shadow-top-z-2">
 					<li>{{HTML::link('/tema', 'Temas', [ 'class' => 'text-info'])}}</li>
 					<li>{{HTML::link('/user', 'Usuarios', [ 'class' => 'text-info'])}}</li>
 					<li>{{HTML::link('#', 'Servidores', [ 'class' => 'text-info'])}}</li>

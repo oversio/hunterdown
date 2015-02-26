@@ -5,7 +5,7 @@ class TemaController extends BaseController
 	public function Index()
 	{ 
 		$temas = Tema::paginate(10);
-		return View::make('tema.admin')->with(['temas' => $temas, 'regis' => 0]);
+		return View::make('tema.admin')->with(['temas' => $temas, 'mens' => '', 'clase' => '']);
 	}
 
 	public function Create()
@@ -29,7 +29,7 @@ class TemaController extends BaseController
 	{
 
 		$tema = New Tema();
-		$genSelected = Input::get('generos', false);
+		$genSelected = Input::get('generos', false);	
 
 		$tema->categoria_id = Input::get('categoria');
 		$tema->user_id 		= Auth::user()->id;
@@ -43,23 +43,39 @@ class TemaController extends BaseController
 		$tema->trailer		= Input::get('trailer');
 		$tema->formato 		= Input::get('formato');
 		$tema->descargas 	= 0;
-		$tema->poster 		= Input::get('imagen');
+		$tema->poster 		= "INS";
 
 		$tema->save();
 
-		//$i = 0;
+
+		$imagen		= Input::file('file');
+		$size 		= $imagen->getSize();
+		$tipo 		= $imagen->getClientOriginalExtension();
+		$filename 	= 'TemaID_'.$tema->id.'.'.$tipo;
+		$folder_destino = "img/posters";
+		$successUp 	= $imagen->move('public/'.$folder_destino, $filename);
+
+		if ($successUp) {			
+			$rowsAfect = Tema::find($tema->id)->update(['poster' => $folder_destino.'/'.$filename]);
+			$mens = "Tema <strong class='text-danger'>".$tema->titulo."</strong> guardado con exito!";
+			$clase = 'alert-info';
+		} else {
+			$mens = "Tema <strong class='text-danger'>".$tema->titulo."</strong> guardado con exito pero ocurrio un error al guardar el poster";
+			$clase = 'alert-warning';
+		}
+
+		$i = 0;
 		foreach ($genSelected as $gentem) {
 			$generotema = New Generotema();
 
-			//$generotema->genero_id = $genSelected[$i];
-			$generotema->genero_id = $gentem;
+			$generotema->genero_id = $genSelected[$i];
 			$generotema->tema_id   = $tema->id;
 
 			$generotema->save();
-		//	$i++;
+			$i++;
 		}
 
 		$temas = Tema::paginate(10);
-		return View::make('tema.admin')->with(['temas' => $temas, 'temains' => $tema, 'regis' => 1]);
+		return View::make('tema.admin')->with(['temas' => $temas, 'mens' => $mens, 'clase' => $clase]);
 	}
 }

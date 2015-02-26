@@ -29,7 +29,7 @@ class AuthController extends BaseController {
             return Redirect::intended('/');
         }
         // Si los datos no son los correctos volvemos al login y mostramos un error
-        return Redirect::back()->with(['error_message', 'Datos de autentificación invalidos', 'regis' => 0])->withInput();
+        return Redirect::back()->with(['error_message' => 'Datos de autentificación invalidos', 'regis' => 0])->withInput();
     }
 
     public function logOut()
@@ -37,7 +37,7 @@ class AuthController extends BaseController {
         // Cerramos la sesión
         Auth::logout();
         // Volvemos al login y mostramos un mensaje indicando que se cerró la sesión
-        return Redirect::to('login')->with(['error_message', 'Sesión Finalizada', 'regis' => 0])->withInput();
+        return Redirect::to('login')->with(['error_message' => 'Sesión Finalizada', 'regis' => 0])->withInput();
     }
 
 }

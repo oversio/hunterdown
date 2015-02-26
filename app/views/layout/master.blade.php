@@ -59,10 +59,8 @@
 							<!--li>{{ HTML::link('/', 'Inicio') }}</li-->
 							<li>{{ HTML::link('#', 'Películas') }}</li>
 							<li>{{ HTML::link('#', 'Series') }}</li>
-							@if (Auth::check())
-								@if (Auth::user()->tipouser_id == 1)
-									<li>{{ HTML::link('/admin', 'Administrar') }}</li>
-								@endif
+							@if (Auth::check() && Auth::user()->tipouser_id == 1)
+								<li>{{ HTML::link('/admin', 'Administrar') }}</li>
 							@endif
 						@show
 					</ul>
@@ -77,11 +75,15 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li><a id="userinfo" href="#">Mi Perfil</a></li>
-									@if(Auth::user()->tipouser_id != 3)
+									@if(Auth::user()->tipouser_id == 2)
 										<li><a id="usermovies" href="#">Películas</a></li>
 										<li><a id="userseries" href="#">Series</a></li>
 									@endif
-									<li><a id="logout" href="logout">Cerrar</a></li>
+									@if(Auth::user()->tipouser_id == 1)
+										<li><a id="temaadmin" href="/tema">Temas</a></li>
+										<li><a id="useradmin" href="/user">Usuarios</a></li>
+									@endif
+									<li><a id="logout" href="logout">Cerrar Sesión</a></li>
 								</ul>
 							</li>
 						@else

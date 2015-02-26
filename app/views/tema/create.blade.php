@@ -10,7 +10,7 @@
 		<div class="col-md-8 col-md-offset-2">
 			<div class="well well-lg">
 
-				{{ Form::open(['id' => 'form-registro', 'class' => 'form-horizontal', 'method' => 'post', 'action' => 'TemaController@store']) }}
+				{{ Form::open(['id' => 'form-registro', 'class' => 'form-horizontal', 'method' => 'post', 'action' => 'TemaController@store', 'files' => true]) }}
 				
 					<fieldset>
 						<legend>Registrar Nuevo Tema</legend>
@@ -106,9 +106,10 @@
 						</div>
 
 						<div class="form-group">
-							{{ Form::label('imagen', 'Imágen', ['class' => 'col-md-3 control-label']) }}							
+							{{ Form::label('file', 'Imágen', ['class' => 'col-md-3 control-label']) }}							
 							<div class="col-md-7">
-								{{ Form::file('imagen', ['id' => 'imagen'] ) }}
+								{{ Form::file('file', '', ['id' => 'file'] ) }}
+								<span class="help-block">Tamaño recomendado de la imágen: min 270x500px.</span>
 							</div>
 						</div>
 						
