@@ -70,26 +70,26 @@
                   </div>
 
                   <div class="form-group"> <!-- Input de Password -->
-                     {{Form::label('passwd', 'Contraseña', array('class' => 'col-md-4 control-label'))}}
+                     {{Form::label('password', 'Contraseña', array('class' => 'col-md-4 control-label'))}}
                       <div class="col-md-8">
-                          {{Form::input('password', 'passwd', '', array('id' => 'passwd', 
-                                        'placeholder' => 'Ingrese una Contraseña', 
+                          {{Form::password('password', ['id' => 'password', 
+                                        'placeholder' => 'Ingrese la Contraseña', 
                                         'class' => 'form-control input-md', 
                                         'required' => 'true',
-                                        'autocomplete' => 'off'))}}
+                                        'autocomplete' => 'off'])}}
                          <span class="help-block">Ingrese una contraseña, entre 3 y 20 caracteres</span>
                       </div>
                   </div>
 
                   <div class="form-group"> <!-- Input de Re-Password -->
-                     {{Form::label('passwd_confirmation', 'Re-ingrese la Contraseña', 
+                     {{Form::label('password_confirmation', 'Re-ingrese la Contraseña', 
                                     array('class' => 'col-md-4 control-label'))}}
                       <div class="col-md-8">
-                          {{Form::input('password', 'passwd_confirmation', '', array('id' => 'passwd_confirmation', 
+                          {{Form::password('password_confirmation', ['id' => 'password_confirmation', 
                                         'placeholder' => 'Re-ingrese la Contraseña', 
                                         'class' => 'form-control input-md', 
                                         'required' => 'true',
-                                        'autocomplete' => 'off'))}}
+                                        'autocomplete' => 'off'])}}                          
                          <span class="help-block">Vuelve a ingresar la contraseña</span>
                       </div>
                   </div>

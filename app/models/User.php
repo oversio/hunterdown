@@ -43,17 +43,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'email'     => 'required|confirmed|email|min:6|max:100|unique:users',
 			'password'  => 'required|confirmed|min:3|max:25',
 			'sexo'      => 'required|in:Mujer,Hombre,Otros',
-			'fecnac'	=> 'date'
+			'fecnac'	=> 'required|date'
 		];
 
 		$validacion = Validator::make($data, $rules, $messages);
-		if ($validacion->passes())        {
-            return true;
+		if ($validacion->fails()){
+			$this->errors = $validacion->errors();        
+	        return false;	
         }
         
-        $this->errors = $validacion->errors();
+        return true;
         
-        return false;
 	}
 
 

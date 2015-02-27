@@ -24,16 +24,21 @@ class UserController extends BaseController
   {
     $user = New User();
     $fechaNac = Input::get('ano')."/".Input::get('mes')."/".Input::get('dia');
+
     $data = [
       'nombre'    => Input::get('nombre'),
       'usuario'   => Input::get('usuario'),
       'email'     => Input::get('email'),
-      'password'  => Input::get('passwd'),
+      //'email_c'     => Input::get('email_confirmation'),
+      'password'  => Input::get('password'),
+      //'password_c'  => Input::get('password_confirmation'),
       'sexo'      => Input::get('sexo'),
       'fecnac'    => $fechaNac
     ];
 
-    dd($data);
+    //dd($data);
+
+    echo "<h1>".$user->isValid($data)."</h1>";
 
     if ($user->isValid($data)) {
       $user->fill($data);
