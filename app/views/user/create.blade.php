@@ -10,7 +10,7 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="well well-lg">
 
-            {{ Form::model($user,array('id' => 'form-registro', 'class' => 'form-horizontal', 'method' => 'post', 'action' => 'UserController@store')) }}
+            {{ Form::model($user,array('id' => 'form-registro', 'class' => 'form-horizontal', 'method' => 'post', 'action' => 'UserController@store', 'role' => 'form')) }}
 
                 <fieldset>
                   @if($errors->any())
@@ -27,8 +27,8 @@
 
                   <div class="form-group"> <!-- Input de Nombre -->
                      {{Form::label('nombre', 'Nombre', array('class' => 'col-md-4 control-label'))}}
-                      <div class="col-md-8">
-                          {{Form::input('text', 'nombre', '', array('id' => 'nombre', 
+                      <div class="col-md-8">                          
+                          {{Form::text('nombre', null, array('id' => 'nombre', 
                                         'placeholder' => 'Nombre para mostrar', 
                                         'class' => 'form-control input-md', 
                                         'required' => 'true'))}}
@@ -39,7 +39,7 @@
                   <div class="form-group"> <!-- Input de Usuario -->
                      {{Form::label('usuario', 'Usuario', array('class' => 'col-md-4 control-label'))}}
                       <div class="col-md-8">
-                          {{Form::input('text', 'usuario', '', array('id' => 'usuario', 
+                          {{Form::text('usuario', null, array('id' => 'usuario', 
                                         'placeholder' => 'Nombre de Usuario', 
                                         'class' => 'form-control input-md', 
                                         'required' => 'true'))}}
@@ -50,7 +50,7 @@
                   <div class="form-group"> <!-- Input de E-Mail -->
                      {{Form::label('email', 'E-Mail', array('class' => 'col-md-4 control-label'))}}
                       <div class="col-md-8">
-                          {{Form::input('text', 'email', '', array('id' => 'email', 
+                          {{Form::text('email', null, array('id' => 'email', 
                                         'placeholder' => 'Correo Electrónico', 
                                         'class' => 'form-control input-md', 
                                         'required' => 'true'))}}
@@ -61,7 +61,7 @@
                   <div class="form-group"> <!-- Input de Re-Email -->
                      {{Form::label('email_confirmation', 'Re-ingresa E-Mail', array('class' => 'col-md-4 control-label'))}}
                       <div class="col-md-8">
-                          {{Form::input('text', 'email_confirmation', '', array('id' => 'email_confirmation', 
+                          {{Form::text('email_confirmation', null, array('id' => 'email_confirmation', 
                                         'placeholder' => 'Re-ingresa Correo Electrónico', 
                                         'class' => 'form-control input-md', 
                                         'required' => 'true'))}}
@@ -125,9 +125,10 @@
                     <div class="col-md-12 text-center">
                       <div class="btn-group">
                        
-                        {{Form::submit('Aceptar', ['id' => 'btn-ok', 'name' => 'btn-ok',
+                        <!--{{Form::submit('Aceptar', ['id' => 'btn-ok', 'name' => 'btn-ok',
                                                    'class' => 'btn btn-default col-md-3',
-                                                   'style' => 'width: 120px;'])}}
+                                                   'style' => 'width: 120px;'])}} -->
+                        {{ Form::button('Aceptar', array('type' => 'submit', 'class' => 'btn btn-default col-md-3', 'id' => 'btn-ok', 'style' => 'width: 120px;')) }}                                                   
 
                         {{Form::button('Cancelar', ['id' => 'btn-cancel', 'name' => 'btn-cancel',
                                                     'class' => 'btn btn-primary col-md-3',
